@@ -1,6 +1,6 @@
 import { html, css, LitElement, property } from 'lit-element';
 
-export class OpenWc extends LitElement {
+export class Accordion_Button extends LitElement {
   static styles = css`
     :host {
       display: block;
@@ -10,17 +10,20 @@ export class OpenWc extends LitElement {
   `;
 
   @property({ type: String }) name = 'Hey there';
-
-  __increment() {
+  @property({ type: Boolean }) open = false;
+  AccordionClick() {
+    this.open = !this.open;
     console.log("click");
   }
 
   render() {
     return html`
-      <button @click=${this.__increment}>increment</button>
-      <slot>
-      // childNodes 생성 되는부분 shadow DOM 으로 생성됨
-      </slot>
+      <button @click=${this.AccordionClick}>Accordion-Button</button>
+      <div style="display: ${this.open ? `none`: null }">
+         <slot>// childNodes 생성 되는부분 shadow DOM 으로 생성됨
+
+         </slot>
+      </div>
     `;
   }
 }
