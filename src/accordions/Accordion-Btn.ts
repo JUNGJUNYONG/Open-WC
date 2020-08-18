@@ -18,6 +18,9 @@ export class OpenWc extends LitElement {
   render() {
     return html`
       <button @click=${this.__increment}>increment</button>
+      <slot>
+      // childNodes 생성 되는부분 shadow DOM 으로 생성됨
+      </slot>
     `;
   }
 }
